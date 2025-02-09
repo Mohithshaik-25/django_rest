@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Update Record</h1>
+            <form method="POST" action="{% url 'update' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="number" id="id" name="id" placeholder="Enter the ID to update" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter the new name" required>
+                </div>
+                <button type="submit" class="btn">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
