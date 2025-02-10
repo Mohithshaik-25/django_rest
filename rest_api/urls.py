@@ -7,6 +7,6 @@ urlpatterns = [
     path('api/rest-prac/<int:pk>/', views.RestPracDetailView.as_view(), name="rest-prac-detail"),
     path('register',views.register,name="register"),
     path('update',views.update,name="update"),
-     path('delete',views.delete,name="delete")
+    path('delete',views.delete,name="delete")
 
 ]
