@@ -69,3 +69,25 @@ def update(req):
 
     # Render the registration form for GET requests
     return render(req, "update.html")
+
+def delete(req):
+    if req.method == "POST":
+        id = req.POST.get("id")  # Retrieve the ID of the record to delete
+        api_url = f"http://127.0.0.1:8000/api/rest-prac/{id}/"
+
+        try:
+            # Use requests.delete to send a DELETE request to the API
+            response = requests.delete(api_url)
+
+            # Check if the record was successfully deleted
+            if response.status_code == 204:  # HTTP 204 No Content
+                return redirect("home")
+            else:
+                return HttpResponse(f"Error: {response.status_code} - {response.text}")
+
+        except Exception as e:
+            # Handle any errors that occur during the API call
+            return HttpResponse(f"An error occurred: {str(e)}")
+
+    # Render the delete form for GET requests
+    return render(req, "delete.html")
